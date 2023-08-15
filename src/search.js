@@ -152,7 +152,7 @@ search_result_form.onsubmit = (e) => {
 
 // Define the print function
 const printMarkSheet = () => {
-  sheet.querySelector(".result_status").style.display = "none";
+  // sheet.querySelector(".result_status").style.display = "none";
   const printContent = document.querySelector(".markSheet_container .for_print_section").innerHTML;
   const originalContent = document.body.innerHTML;
   document.body.innerHTML = printContent;
