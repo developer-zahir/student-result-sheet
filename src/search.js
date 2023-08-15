@@ -23,7 +23,7 @@ search_result_form.onsubmit = (e) => {
       <div class="for_print_section">
       <div class="card my-4 mt-5">
       <div class="card-body student-result-sheet table-responsive-md table-responsive-sm">
-        <div class="student-info">
+        <div class="student-info mt-3">
         <div class="row">
         <div class="col-lg-3"> 
           <img style="width:200px; height:160px; object-fit:cover;" src="${studentResult.photo}" />
