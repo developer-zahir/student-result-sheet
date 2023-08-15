@@ -21,7 +21,7 @@ search_result_form.onsubmit = (e) => {
       sheet.style.display = "block";
       content = `
       <div class="for_print_section">
-      <div class="card my-4 mt-5">
+      <div class="card my-4 mt-5 px-3">
       <div class="card-body student-result-sheet table-responsive-md table-responsive-sm">
         <div class="student-info mt-3">
         <div class="row">
@@ -129,7 +129,7 @@ search_result_form.onsubmit = (e) => {
     } else {
       content = `
       <div class="card my-4 mt-0">
-      <div class="card-body student-result-sheet bg-danger-subtle">
+      <div class="card-body student-result-sheet bg-danger-subtle text-center">
         <div class="student-info">
         Result not found 
         </div>
