@@ -21,7 +21,7 @@ search_result_form.onsubmit = (e) => {
       content = `
       <div class="for_print_section">
       <div class="card my-4 mt-5">
-      <div class="card-body student-result-sheet">
+      <div class="card-body student-result-sheet table-responsive-md table-responsive-sm">
         <div class="student-info">
         <div class="row">
         <div class="col-lg-3"> 
@@ -41,8 +41,8 @@ search_result_form.onsubmit = (e) => {
               social_science: studentResult.result.social_science,
               religion: studentResult.result.religion,
             }).result === "F"
-              ? '<h2 style="color:red; font-size:20px;">Failed</h2>'
-              : '<h2 style="color:green; font-size:20px;">Passed</h2>'
+              ? '<span class="res_status f">Failed</span>'
+              : '<span class="res_status ">Passed</span>'
           }
           </div>
          
@@ -50,7 +50,7 @@ search_result_form.onsubmit = (e) => {
       </div>
   
       <hr />
-      <table class="table table-bordered">
+      <table class="table table-bordered table-striped">
         <tr>
           <td>Subject</td>
           <td>Marks</td>

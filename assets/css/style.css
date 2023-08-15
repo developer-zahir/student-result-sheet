@@ -1,3 +1,16 @@
 .preloder{
     display: none;
 }
+.res_status {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    background: #198754;
+    color: white;
+    padding: 5px 9px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+.res_status.f{
+    background-color: rgb(185, 24, 24);
+}

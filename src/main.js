@@ -11,7 +11,7 @@ const all_student_data = document.querySelector(".all-students-data");
 const single_student_container = document.querySelector(".single_student_container");
 
 // profile photo preview
-photo.onchange = (e) => {
+photo.onkeyup = (e) => {
   if (photo) {
     photo_preview.innerHTML = ` <img class="img-thumbnail mt-3 w-100" src="${e.target.value}" >`;
   }
@@ -26,7 +26,7 @@ const showData = () => {
       content += `
           <tr class="align-middle">
             <td>${index < 9 ? `0${index + 1}` : index + 1}</td>
-            <td><img style="width: 60px; object-fit: cover" class="rounded" src="${student.photo}" alt="${student.name}" /></td>
+            <td><img style="width: 60px; height:50px ; object-fit:cover;"  class="rounded" src="${student.photo}" alt="${student.name}" /></td>
             <td>${student.name}</td>
             <td>${student.roll}</td>
             <td>${student.reg}</td>
