@@ -40,11 +40,13 @@ const showData = () => {
           </td>
           
             <td>
-            <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#show_single_student_modal" onclick="show_student_single_data('${
-              student.roll
-            }')">
+            ${
+              student.result === null
+                ? `<button class="btn btn-sm btn-danger"> <i class="fa-regular fa-eye-slash"></i> </button>`
+                : `<button class="btn btn-sm btn-success text-white" data-bs-toggle="modal" data-bs-target="#show_single_student_modal" onclick="show_student_single_data('${student.roll}')">
                 <i class="fa-solid fa-eye"></i>
-            </button>
+            </button>`
+            }
             <button class="btn btn-sm btn-warning" data-bs-toggle="modal"  data-bs-target="#edite_student_modal" onclick = "editeStudent('${student.id}')">
                 <i class="fa-solid fa-edit"></i>
             </button>
@@ -252,14 +254,19 @@ const show_student_single_data = (roll) => {
 
   single_student_container.innerHTML = `
   <div class="for_print_section">
-  <div class="card my-4 mt-5">
+  <div class="card">
   <div class="card-body student-result-sheet">
     <div class="student-info">
  
     <div class="row">
-      <img style="width:200px; height:160px; object-fit:cover;" src="${studentResult.photo}" />
+      <div class="col-lg-2">
+      <img class="rounded-2" style="width:100px; height:100px; object-fit:cover; " src="${studentResult.photo}" />
+      </div>
+      <div class="col-lg-9">
       <h3 class="mt-3">${studentResult.name}</h3>
       <p class="m-0">Roll : ${studentResult.roll} | Reg: ${studentResult.reg}</p>
+      </div>
+     
    </div>
 
   <hr />
