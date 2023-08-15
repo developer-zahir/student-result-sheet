@@ -100,7 +100,7 @@ student_create_form.onsubmit = (e) => {
       });
 
       setData("students", old_student);
-
+      showData();
       setTimeout(() => {
         add_student_modal_close.click();
       }, 2000);
