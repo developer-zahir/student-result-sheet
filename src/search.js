@@ -1,19 +1,18 @@
 const search_section = document.querySelector(".search_section");
 const search_result_form = document.getElementById("search_result_form");
 const sheet = document.querySelector(".markSheet_container");
+const preloder = document.querySelector(".preloder");
 
 search_result_form.onsubmit = (e) => {
   e.preventDefault();
-
   const form_data = new FormData(e.target);
   const data = Object.fromEntries(form_data.entries());
-
+  preloder.style.display ='block';
   let oldData = getData("students");
-
   const studentResult = oldData.find((item) => item.roll === data.roll && item.reg === data.reg);
-  sheet.innerHTML = `<div class="mx-auto text-center my-5"> <img style="width:100px; height:100px;" src="../assets/img/proloder.gif"> </div>`
   
   setTimeout(()=>{
+  preloder.style.display ='none';
    
     let content;
     if (studentResult) {
@@ -24,7 +23,6 @@ search_result_form.onsubmit = (e) => {
       <div class="card my-4 mt-5">
       <div class="card-body student-result-sheet">
         <div class="student-info">
-     
         <div class="row">
         <div class="col-lg-3"> 
           <img style="width:200px; height:160px; object-fit:cover;" src="${studentResult.photo}" />
