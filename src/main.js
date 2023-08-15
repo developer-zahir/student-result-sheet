@@ -248,59 +248,173 @@ const deleteStudent = (roll) => {
 // show induvisual student data
 const show_student_single_data = (roll) => {
   const students = getData("students");
-  const single_student = students.find((data) => data.roll == roll);
+  const studentResult = students.find((item) => item.roll === roll );
+ 
+
+
   single_student_container.innerHTML = `
-  <div class="text-end mb-2"> <button class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="for_print_section">
+  <div class="card my-4 mt-5">
+  <div class="card-body student-result-sheet">
+    <div class="student-info">
  
-  <div class="student-info text-center p-3" style="background:#dddddd80;">
-  
-  
-  
-  <div class="row">
+    <div class="row">
     <div class="col-lg-3"> 
-     <img class="img-fluid w-100 rounded  " src="${single_student.photo}" alt="${single_student.name}" />
+      <img style="width:200px; height:160px; object-fit:cover;" src="${studentResult.photo}" />
+      <h3 class="mt-3">${studentResult.name}</h3>
+      <p class="m-0">Roll : ${studentResult.roll} | Reg: ${studentResult.reg}</p>
     </div>
-    <div class="col-lg-9 text-start">
-      <h3 class="h4 m-0">${single_student.name}</h3>
-      
-        <span>Roll: ${single_student.roll}</span>
-        <span>Reg: ${single_student.reg}</span>
- 
+   
+    <div class="col-lg-9"> 
+      <div class="result_status text-end" >
+      ${
+        getFinalResult({
+          bangla: studentResult.result.bangla,
+          english: studentResult.result.english,
+          math: studentResult.result.math,
+          science: studentResult.result.science,
+          social_science: studentResult.result.social_science,
+          religion: studentResult.result.religion,
+        }).result === "F"
+          ? '<h2 style="color:red; font-size:20px;">Failed</h2>'
+          : '<h2 style="color:green; font-size:20px;">Passed</h2>'
+      }
+      </div>
+     
     </div>
   </div>
 
-
-    
-    
- </div>
-
-
-
-<div>
-  <table class="table table-striped border mt-3">
-    <thead class="fw-bold">
-      <tr>
-        <td>Subject</td>
-        <td>Mark</td>
-        <td>GPA</td>
-        <td>Gread</td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Bangla</td>
-        <td>52</td>
-        <td>2.5</td>
-        <td>B</td>
-      </tr>
-      <tr>
-        <td>Bangla</td>
-        <td>52</td>
-        <td>2.5</td>
-        <td>B</td>
-      </tr>
-    </tbody>
+  <hr />
+  <table class="table table-bordered">
+    <tr>
+      <td>Subject</td>
+      <td>Marks</td>
+      <td>GPA</td>
+      <td>Grade</td>
+      <td>CGPA</td>
+      <td>Final Result</td>
+    </tr>
+    <tr>
+      <td>Bangla</td>
+      <td>${studentResult.result.bangla}</td>
+      <td>${getGpaGrade(studentResult.result.bangla).gpa}</td>
+      <td>${getGpaGrade(studentResult.result.bangla).grade}</td>
+      <td rowspan="6">${getFinalResult({
+        bangla: studentResult.result.bangla,
+        english: studentResult.result.english,
+        math: studentResult.result.math,
+        science: studentResult.result.science,
+        social_science: studentResult.result.social_science,
+        religion: studentResult.result.religion,
+      }).cgpa.toFixed(2)}</td>
+      <td rowspan="6">${
+        getFinalResult({
+          bangla: studentResult.result.bangla,
+          english: studentResult.result.english,
+          math: studentResult.result.math,
+          science: studentResult.result.science,
+          social_science: studentResult.result.social_science,
+          religion: studentResult.result.religion,
+        }).result
+      }</td>
+    </tr>
+    <tr>
+      <td>English</td>
+      <td>${studentResult.result.english}</td>
+      <td>${getGpaGrade(studentResult.result.english).gpa}</td>
+      <td>${getGpaGrade(studentResult.result.english).grade}</td>
+    </tr>
+    <tr>
+      <td>Math</td>
+      <td>${studentResult.result.math}</td>
+      <td>${getGpaGrade(studentResult.result.math).gpa}</td>
+      <td>${getGpaGrade(studentResult.result.math).grade}</td>
+    </tr>
+    <tr>
+      <td>Science</td>
+      <td>${studentResult.result.science}</td>
+      <td>${getGpaGrade(studentResult.result.science).gpa}</td>
+      <td>${getGpaGrade(studentResult.result.science).grade}</td>
+    </tr>
+    <tr>
+      <td>Social Science</td>
+      <td>${studentResult.result.social_science}</td>
+      <td>${getGpaGrade(studentResult.result.social_science).gpa}</td>
+      <td>${getGpaGrade(studentResult.result.social_science).grade}</td>
+    </tr>
+    <tr>
+      <td>Religion</td>
+      <td>${studentResult.result.religion}</td>
+      <td>${getGpaGrade(studentResult.result.religion).gpa}</td>
+      <td>${getGpaGrade(studentResult.result.religion).grade}</td>
+    </tr>
   </table>
 </div>
-  `;
+</div>
+</div>
+</div>
+
+<div class="border rounded-3 p-4 d-flex gap-3">
+ <button type="button" class="btn btn-primary px-5" onclick="printMarkSheet()">Print</button> 
+ <button type="button" class="btn btn-danger px-5" onclick="try_again()">Try again</button> 
+</div>
+
+
+
+
+//   const single_student = students.find((data) => data.roll == roll);
+//   single_student_container.innerHTML = `
+//   <div class="text-end mb-2"> <button class="btn-close" data-bs-dismiss="modal"></button></div>
+ 
+//   <div class="student-info text-center p-3" style="background:#dddddd80;">
+  
+  
+  
+//   <div class="row">
+//     <div class="col-lg-3"> 
+//      <img class="img-fluid w-100 rounded  " src="${single_student.photo}" alt="${single_student.name}" />
+//     </div>
+//     <div class="col-lg-9 text-start">
+//       <h3 class="h4 m-0">${single_student.name}</h3>
+      
+//         <span>Roll: ${single_student.roll}</span>
+//         <span>Reg: ${single_student.reg}</span>
+ 
+//     </div>
+//   </div>
+
+
+    
+    
+//  </div>
+
+
+
+// <div>
+//   <table class="table table-striped border mt-3">
+//     <thead class="fw-bold">
+//       <tr>
+//         <td>Subject</td>
+//         <td>Mark</td>
+//         <td>GPA</td>
+//         <td>Gread</td>
+//       </tr>
+//     </thead>
+//     <tbody>
+//       <tr>
+//         <td>Bangla</td>
+//         <td>52</td>
+//         <td>2.5</td>
+//         <td>B</td>
+//       </tr>
+//       <tr>
+//         <td>Bangla</td>
+//         <td>52</td>
+//         <td>2.5</td>
+//         <td>B</td>
+//       </tr>
+//     </tbody>
+//   </table>
+// </div>
+//   `;
 };
