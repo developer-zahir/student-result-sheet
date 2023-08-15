@@ -7,13 +7,14 @@ search_result_form.onsubmit = (e) => {
   e.preventDefault();
   const form_data = new FormData(e.target);
   const data = Object.fromEntries(form_data.entries());
-  preloder.style.display ='block';
+  preloder.style.display = "block";
   let oldData = getData("students");
   const studentResult = oldData.find((item) => item.roll === data.roll && item.reg === data.reg);
-  
-  setTimeout(()=>{
-  preloder.style.display ='none';
-   
+
+  setTimeout(() => {
+    preloder.style.display = "none";
+    const body = document.querySelector("body");
+    body.style.backgroundColor = "#f4fdffe0";
     let content;
     if (studentResult) {
       search_section.style.display = "none";
@@ -137,18 +138,10 @@ search_result_form.onsubmit = (e) => {
       
       `;
     }
-  
+
     sheet.innerHTML = content;
-
-
-
-
-  },3000)
-
-
- 
+  }, 3000);
 };
-
 
 // Define the print function
 const printMarkSheet = () => {
