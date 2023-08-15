@@ -119,7 +119,7 @@ search_result_form.onsubmit = (e) => {
     </div>
    </div>
   
-    <div class="border rounded-3 p-4 d-flex gap-3">
+    <div class="border rounded-3 p-4 d-flex gap-3 bg-white">
      <button type="button" class="btn btn-primary px-5" onclick="printMarkSheet()">Print</button> 
      <button type="button" class="btn btn-danger px-5" onclick="try_again()">Try again</button> 
     </div>
