@@ -14,3 +14,6 @@
 .res_status.f{
     background-color: rgb(185, 24, 24);
 }
+.modal-dialog{
+    max-width: 800px;
+}
