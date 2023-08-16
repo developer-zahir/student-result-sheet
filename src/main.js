@@ -258,6 +258,7 @@ const show_student_single_data = (roll) => {
   <div class="card-body student-result-sheet">
     <div class="student-info">
  
+   
     <div class="row">
       <div class="col-lg-2">
       <img class="rounded-2" style="width:100px; height:100px; object-fit:cover; " src="${studentResult.photo}" />
@@ -270,7 +271,7 @@ const show_student_single_data = (roll) => {
    </div>
 
   <hr />
-  <table class="table table-bordered">
+  <table class="table table-bordered table-striped">
     <tr>
       <td>Subject</td>
       <td>Marks</td>
